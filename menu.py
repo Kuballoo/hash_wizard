@@ -1,7 +1,7 @@
 # This file saves functions with menu lower layer and some const value
 
 '''
-    Hierary:
+    Hierary of menu:
     main - main.py | main menu
     hash_menu - printing menu for hasher and hasher cracker
     sha_menu* - printing available SHA algorithms for SHA2 and SHA3 
@@ -12,24 +12,10 @@
     * - if user selected SHA2 or SHA3
 '''
 
-
 from colorama import Fore, Back, Style
 from os import name, system
+from universal_data import *
 
-MAIN_BANNER = '''######################
-#       HASHER       #
-######################\n'''
-
-''' 
-    Define our clear function
-'''
-def clear():
-    # for windows
-    if name == 'nt':
-        _ = system('cls')
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        _ = system('clear')
 
 
 '''
@@ -38,7 +24,7 @@ def clear():
 def hasher_menu():
     clear()
     print(Fore.GREEN + MAIN_BANNER + Style.RESET_ALL)
-    print(Fore.BLUE + '----- Hasher option -----' + Style.RESET_ALL)
+    print(Fore.BLUE + '----- Hasher options -----' + Style.RESET_ALL)
     print('1. Hash one string')
     print('2. Hash dictionary int txt file to txt file')
     print(Fore.RED + '0. Back' + Style.RESET_ALL)

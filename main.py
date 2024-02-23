@@ -1,9 +1,12 @@
 from menu import hash_menu, clear, MAIN_BANNER
 from colorama import Fore, Style
+from universal_data import *
 
+import hasher
 
-
-
+'''
+    Main functions calling another functions
+'''
 def main():
     while True:
         clear()
@@ -20,7 +23,8 @@ def main():
             case 1:
                 hash_menu(1)
             case 2:
-                hash_menu(0)
+                op = hash_menu(0)
+                hasher.hasher(op//100, (op//10)%10, op%10)
             case 3:
                 pass
             case _:
