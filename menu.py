@@ -1,5 +1,18 @@
 # This file saves functions with menu lower layer and some const value
 
+'''
+    Hierary:
+    main - main.py | main menu
+    hash_menu - printing menu for hasher and hasher cracker
+    sha_menu* - printing available SHA algorithms for SHA2 and SHA3 
+        hasher_menu - printing options how many strings user have to hash
+        or
+        cracker_menu - prinitng options to insert hash to crack
+
+    * - if user selected SHA2 or SHA3
+'''
+
+
 from colorama import Fore, Back, Style
 from os import name, system
 
@@ -112,12 +125,13 @@ def hash_menu(unknown=False):
                         return 0
                 case _: 
                     return 0
-        
-        op = hasher_menu()
-        if op != 0:
-            option += op
-            print(option)
-            input()
-            return option
+        if not unknown:
+            op = hasher_menu()
+            if op != 0:
+                option += op
+                return option
+        else:
+            # When cracker is selected
+            pass
     
 
