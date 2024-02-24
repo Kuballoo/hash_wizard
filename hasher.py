@@ -49,7 +49,7 @@ def hasher(src, sha_mode, alg):
         # Creating hash_obj - storing selected algorithm
         hash_obj = hash_func(pdw.encode())
         hashed_pass = hash_obj.hexdigest()
-        print(f'Your hashed string: {hashed_pass}')
+        print(f'Your hashed string: {Fore.CYAN + hashed_pass + Style.RESET_ALL}')
     else:
         filename = input_data(str, 'Enter your txt file name: ')
         # Stripping .txt from file
@@ -72,7 +72,7 @@ def hasher(src, sha_mode, alg):
                             pbar.update(1)
             print(Fore.GREEN + f'Hashes saved to file hashed_{filename}_{hash_functions_str.get((alg, sha_mode), None)}.txt' + Style.RESET_ALL)
         except Exception as e:
-            print(f'ERROR: {e}')
+            print(Fore.RED + f'ERROR: {e}' + Style.RESET_ALL)
     
     input(Fore.RED + 'Press enter to continue...' + Style.RESET_ALL)
     

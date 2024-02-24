@@ -101,7 +101,7 @@ def hash_menu(unknown=False):
                 case 5:
                     option = 5
                     if not unknown:
-                        return 0
+                        pass
                 case _: 
                     return 0
         if not unknown and option != 0:
@@ -110,7 +110,6 @@ def hash_menu(unknown=False):
                 option += op
                 return option
         elif option != 0:
-            # When cracker is selected
-            pass
+            return option
     
 
