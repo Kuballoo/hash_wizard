@@ -24,22 +24,20 @@ hash_functions = {
     alg - select concrete alghoritm
 '''
 def hasher(src, sha_mode, alg):
-    clear()
-    print(Fore.GREEN + MAIN_BANNER + Style.RESET_ALL)
-    print(Fore.BLUE + f'----- Hasher -----' + Style.RESET_ALL)
+    print_heading('----- Hasher -----')
 
     # Selecting concret hash function from dictionary
     hash_func = hash_functions.get((alg, sha_mode), None)
 
     # Here user inesrt required data depending on his choice
     if src == 1:
-        pdw = str(input(Fore.CYAN + 'Enter string to hash: ' + Style.RESET_ALL))
+        pdw = input_data(str, 'Enter string to hash: ' )
         # Creating hash_obj - storing selected alghoritm
         hash_obj = hash_func(pdw.encode())
         hashed_pass = hash_obj.hexdigest()
         print(f'Your hashed string: {hashed_pass}')
     else:
-        filename = str(input(Fore.CYAN + 'Enter your txt file name: ' + Style.RESET_ALL))
+        filename = input_data(str, 'Enter your txt file name: ')
         # Striping .txt from file
         if filename.endswith('.txt'):
             filename = filename[:-4]
@@ -47,13 +45,13 @@ def hasher(src, sha_mode, alg):
         # Opening input and output file and saving hashes to hashed_filename.txt
         try:
             with open((filename + '.txt'), 'r') as file:
-               with open('hashed_' + filename + '.txt', 'w') as output:
+               with open(f'hashed_{filename}_{src}{sha_mode}{alg}.txt', 'w') as output:
                     for line in file:
                         line = line.rstrip('\n')
                         hash_obj = hash_func(line.encode())
                         hashed_pass = hash_obj.hexdigest()
                         output.write(hashed_pass + '\n')
-            print(Fore.GREEN + f'Hashes saved to file hashed_{filename}.txt' + Style.RESET_ALL)
+            print(Fore.GREEN + f'Hashes saved to file hashed_{filename}_{src}{sha_mode}{alg}.txt' + Style.RESET_ALL)
         except Exception as e:
             print(f'ERROR: {e}')
     

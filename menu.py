@@ -12,7 +12,6 @@
     * - if user selected SHA2 or SHA3
 '''
 
-from colorama import Fore, Back, Style
 from os import name, system
 from universal_data import *
 
@@ -22,14 +21,12 @@ from universal_data import *
     Printing hasher menu
 '''
 def hasher_menu():
-    clear()
-    print(Fore.GREEN + MAIN_BANNER + Style.RESET_ALL)
-    print(Fore.BLUE + '----- Hasher options -----' + Style.RESET_ALL)
+    print_heading('----- Hasher options -----')
     print('1. Hash one string')
     print('2. Hash dictionary int txt file to txt file')
     print(Fore.RED + '0. Back' + Style.RESET_ALL)
 
-    choice = int(input(Fore.CYAN + '\nEnter your choice: ' + Style.RESET_ALL))
+    choice = input_data(int, 'Enter your choice: ')
 
     match choice:
         case 1:
@@ -44,16 +41,14 @@ def hasher_menu():
     Universal function for sha-2 and sha-3 menu showing and returning selected option
 '''
 def sha_menu(sha_num):
-    clear()
-    print(Fore.GREEN + MAIN_BANNER + Style.RESET_ALL)
-    print(Fore.BLUE + f'----- SHA-{sha_num} selection -----' + Style.RESET_ALL)
+    print_heading(f'----- SHA-{sha_num} selection -----')
     print('1. SHA-224')
     print('2. SHA-256')
     print('3. SHA-384')
     print('4. SHA-512')
     print(Fore.RED + '0. Back' + Style.RESET_ALL)
 
-    choice = int(input(Fore.CYAN + '\nEnter your choice: ' + Style.RESET_ALL))
+    choice = input_data(int, '\nEnter your choice: ')
     match choice:
         case 1:
             return 10+sha_num
@@ -84,9 +79,7 @@ def sha_menu(sha_num):
 '''
 def hash_menu(unknown=False):
     while True:
-        clear()
-        print(Fore.GREEN + MAIN_BANNER + Style.RESET_ALL)
-        print(Fore.BLUE + '----- Hash selection -----' + Style.RESET_ALL)
+        print_heading('----- Hash selection -----')
         print('1. SHA-1')
         print('2. SHA-2')
         print('3. SHA-3')
@@ -94,7 +87,7 @@ def hash_menu(unknown=False):
         print('5. Hash unknown') if unknown else None
         print(Fore.RED + '0. Exit' + Style.RESET_ALL)
 
-        choice = int(input(Fore.CYAN + '\nEnter your choice: ' + Style.RESET_ALL))
+        choice = input_data(int, '\nEnter your choice: ')
         option = 0
         match choice:
                 case 1:
@@ -111,12 +104,12 @@ def hash_menu(unknown=False):
                         return 0
                 case _: 
                     return 0
-        if not unknown:
+        if not unknown and option != 0:
             op = hasher_menu()
             if op != 0:
                 option += op
                 return option
-        else:
+        elif option != 0:
             # When cracker is selected
             pass
     

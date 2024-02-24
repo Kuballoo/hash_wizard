@@ -9,15 +9,13 @@ import hasher
 '''
 def main():
     while True:
-        clear()
-        print(Fore.GREEN + MAIN_BANNER + Style.RESET_ALL)
-        print(Fore.BLUE + '----- Menu -----' + Style.RESET_ALL)
+        print_heading('----- Menu -----')
         print('1. Hash cracker')
         print('2. Hasher')
         print('3. Password dictionary generator')
         print(Fore.RED + '0. Exit' + Style.RESET_ALL)
     
-        choice = int(input(Fore.CYAN + '\nEnter your choice: ' + Style.RESET_ALL))
+        choice = input_data(int, '\nEnter your choice: ')
         
         match choice:
             case 1:
