@@ -1,6 +1,7 @@
 import hashlib
 from colorama import Fore, Style
 from universal_data import *
+from tqdm import tqdm
 
 # Dictionary saving hash functions
 hash_functions = {
@@ -15,6 +16,19 @@ hash_functions = {
     (3, 4): hashlib.sha3_512,
     (4, 0): hashlib.md5
 }
+hash_functions_str = {
+    (1, 0): 'sha1',
+    (2, 1): 'sha224',
+    (2, 2): 'sha256',
+    (2, 3): 'sha384',
+    (2, 4): 'sha512',
+    (3, 1): 'sha3_224',
+    (3, 2): 'sha3_256',
+    (3, 3): 'sha3_384',
+    (3, 4): 'sha3_512',
+    (4, 0): 'md5'
+}
+
 
 '''
     Hasher function
@@ -26,34 +40,39 @@ hash_functions = {
 def hasher(src, sha_mode, alg):
     print_heading('----- Hasher -----')
 
-    # Selecting concret hash function from dictionary
+    # Selecting concrete hash function from dictionary
     hash_func = hash_functions.get((alg, sha_mode), None)
 
-    # Here user inesrt required data depending on his choice
+    # Here user inserts required data depending on his choice
     if src == 1:
         pdw = input_data(str, 'Enter string to hash: ' )
-        # Creating hash_obj - storing selected alghoritm
+        # Creating hash_obj - storing selected algorithm
         hash_obj = hash_func(pdw.encode())
         hashed_pass = hash_obj.hexdigest()
         print(f'Your hashed string: {hashed_pass}')
     else:
         filename = input_data(str, 'Enter your txt file name: ')
-        # Striping .txt from file
+        # Stripping .txt from file
         if filename.endswith('.txt'):
             filename = filename[:-4]
         
         # Opening input and output file and saving hashes to hashed_filename.txt
         try:
             with open((filename + '.txt'), 'r') as file:
-               with open(f'hashed_{filename}_{src}{sha_mode}{alg}.txt', 'w') as output:
-                    for line in file:
-                        line = line.rstrip('\n')
-                        hash_obj = hash_func(line.encode())
-                        hashed_pass = hash_obj.hexdigest()
-                        output.write(hashed_pass + '\n')
-            print(Fore.GREEN + f'Hashes saved to file hashed_{filename}_{src}{sha_mode}{alg}.txt' + Style.RESET_ALL)
+                num_lines = sum(1 for line in file)
+
+            with open((filename + '.txt'), 'r') as file:
+               with open(f'hashed_{filename}_{hash_functions_str.get((alg, sha_mode), None)}.txt', 'w') as output:
+                    with tqdm(total=num_lines, desc="Generating hashes") as pbar:
+                        for line in file:
+                            line = line.rstrip('\n')
+                            hash_obj = hash_func(line.encode())
+                            hashed_pass = hash_obj.hexdigest()
+                            output.write(hashed_pass + '\n')
+                            pbar.update(1)
+            print(Fore.GREEN + f'Hashes saved to file hashed_{filename}_{hash_functions_str.get((alg, sha_mode), None)}.txt' + Style.RESET_ALL)
         except Exception as e:
             print(f'ERROR: {e}')
     
     input(Fore.RED + 'Press enter to continue...' + Style.RESET_ALL)
-
+    
