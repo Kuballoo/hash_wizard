@@ -3,33 +3,6 @@ from colorama import Fore, Style
 from universal_data import *
 from tqdm import tqdm
 
-# Dictionary saving hash functions
-hash_functions = {
-    (1, 0): hashlib.sha1,
-    (2, 1): hashlib.sha224,
-    (2, 2): hashlib.sha256,
-    (2, 3): hashlib.sha384,
-    (2, 4): hashlib.sha512,
-    (3, 1): hashlib.sha3_224,
-    (3, 2): hashlib.sha3_256,
-    (3, 3): hashlib.sha3_384,
-    (3, 4): hashlib.sha3_512,
-    (4, 0): hashlib.md5
-}
-hash_functions_str = {
-    (1, 0): 'sha1',
-    (2, 1): 'sha224',
-    (2, 2): 'sha256',
-    (2, 3): 'sha384',
-    (2, 4): 'sha512',
-    (3, 1): 'sha3_224',
-    (3, 2): 'sha3_256',
-    (3, 3): 'sha3_384',
-    (3, 4): 'sha3_512',
-    (4, 0): 'md5'
-}
-
-
 '''
     Hasher function
     
