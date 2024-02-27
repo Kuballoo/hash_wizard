@@ -1,4 +1,3 @@
-import hashlib
 from colorama import Fore, Style
 from universal_data import *
 from tqdm import tqdm

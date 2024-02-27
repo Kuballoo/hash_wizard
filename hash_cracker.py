@@ -1,4 +1,3 @@
-import hashlib
 from tqdm import tqdm
 
 from universal_data import *
