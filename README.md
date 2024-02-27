@@ -6,7 +6,6 @@ This tool is used for generating password dictionaries, hashing single words and
 
 - [Installation](#installation)
 - [Requirements](#requirements)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 - [Soooon](#soooon)
@@ -16,16 +15,12 @@ This tool is used for generating password dictionaries, hashing single words and
 1. Clone the repository: `git clone https://github.com/yourusername/yourproject.git`
 2. Navigate to the project directory: `cd yourproject`
 3. Open termina and run `pip install -r requirements.txt`
-3. Secondly run `python main.py`.
-4. Have fun from using my script :)
+4. Secondly run `python main.py`.
+5. Have fun from using my script :)
 
 ## Requirements
 
 If you want to use the script, you must have Python 3.11 or higher installed on your device, as well as the modules listed in the 'requirements.txt' file. The script should work on both Linux and Windows operating systems.
-
-## Contributing
-
-Provide guidelines for contributing to the project. Include information on how others can contribute, whether it's through bug reporting, feature requests, or code contributions.
 
 ## License
 
@@ -40,3 +35,5 @@ Contact me: jakub1.gniadek@gmail.com
 In futere I want to add hash alghoritms - Blake2s and Blake2b. Then I want to upgrade `dictionary_generator.py`:
 - Cutting big files into a couple smaller ones
 - Intelligent generating passowords
+
+More functions, if you have some ideas send me them on my mail ;)
